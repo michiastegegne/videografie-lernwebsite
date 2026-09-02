@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#10110f" />
+  <meta name="description" content="Eine visuelle Einführung in die wichtigsten Grundlagen der Videografie." />
+  <title>FRAME / FIELD GUIDE — Videografie Grundlagen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #10110f;
+      --ink-soft: #23251f;
+      --paper: #f0eee7;
+      --paper-deep: #dcd8cc;
+      --line: rgba(16,17,15,.18);
+      --muted: #707268;
+      --acid: #d4ff38;
+      --orange: #ff6338;
+      --blue: #7ca9ff;
+      --mono: "DM Mono", monospace;
+      --sans: "Manrope", Arial, sans-serif;
+      --serif: "Playfair Display", Georgia, serif;
+      --gutter: clamp(20px, 5vw, 76px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--ink); }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--acid); color: var(--ink); }
+    a { color: inherit; }
+    button { font: inherit; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .75fr); gap: clamp(28px, 7vw, 120px); align-items: start; }
+
+    /* Header */
+    .site-header { height: 74px; padding: 0 var(--gutter); border-bottom: 1px solid rgba(240,238,231,.14); background: var(--ink); color: var(--paper); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 20; }
+    .brand { text-decoration: none; display: inline-flex; align-items: baseline; gap: 10px; font-size: 15px; font-weight: 800; letter-spacing: -.05em; }
+    .brand-mark { display: inline-grid; place-items: center; width: 26px; height: 26px; background: var(--acid); color: var(--ink); border-radius: 50%; font: 500 10px var(--mono); letter-spacing: 0; }
+    .nav { display: flex; align-items: center; gap: clamp(12px, 2.2vw, 34px); }
+    .nav a { color: rgba(240,238,231,.72); text-decoration: none; font: 500 11px var(--mono); letter-spacing: .03em; }
+    .nav a:hover, .nav a:focus-visible { color: var(--acid); }
+    .nav .nav-quiz { color: var(--ink); background: var(--acid); padding: 10px 14px; border-radius: 100px; }
+
+    /* Hero: Decide / Learn surface */
+    .hero { min-height: min(840px, calc(100svh - 74px)); position: relative; padding: clamp(54px, 9vw, 145px) var(--gutter) 42px; overflow: hidden; background: var(--ink); color: var(--paper); display: grid; align-content: space-between; }
+    .hero::before { content: ""; position: absolute; width: min(55vw, 760px); aspect-ratio: 1; right: -18vw; top: 7%; border: 1px solid rgba(240,238,231,.16); border-radius: 50%; box-shadow: 0 0 0 13vw transparent, 0 0 0 calc(13vw + 1px) rgba(240,238,231,.1), 0 0 0 25vw transparent, 0 0 0 calc(25vw + 1px) rgba(240,238,231,.07); }
+    .hero::after { content: ""; position: absolute; height: 1px; background: var(--acid); left: 0; bottom: 30%; width: 38%; }
+    .hero-top, .hero-main, .hero-bottom { position: relative; z-index: 1; }
+    .hero-top { display: flex; justify-content: space-between; color: var(--acid); }
+    .hero-main { max-width: 1140px; padding: 8vh 0 6vh; }
+    h1 { margin: 0; font-size: clamp(54px, 9.2vw, 156px); line-height: .84; letter-spacing: -.085em; font-weight: 800; text-wrap: balance; }
+    h1 em { color: var(--acid); font-family: var(--serif); font-weight: 600; letter-spacing: -.07em; }
+    .hero-description { max-width: 500px; margin: clamp(28px, 4vw, 55px) 0 0; color: rgba(240,238,231,.68); font-size: clamp(16px, 1.5vw, 20px); line-height: 1.55; text-wrap: pretty; }
+    .hero-bottom { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; }
+    .hero-index { display: flex; gap: 18px; color: rgba(240,238,231,.48); font: 11px var(--mono); }
+    .hero-index strong { color: var(--paper); font-weight: 500; }
+    .scroll-cue { display: inline-flex; gap: 10px; align-items: center; color: var(--paper); text-decoration: none; font: 500 11px var(--mono); }
+    .scroll-cue span { width: 30px; height: 30px; border: 1px solid rgba(240,238,231,.42); border-radius: 50%; display: grid; place-items: center; }
+
+    /* First section */
+    .intro { padding: clamp(76px, 12vw, 190px) var(--gutter); border-bottom: 1px solid var(--line); }
+    .intro h2, .module h2, .quiz h2 { font-size: clamp(37px, 5.3vw, 78px); line-height: .96; letter-spacing: -.065em; max-width: 850px; margin: 0; text-wrap: balance; }
+    .intro h2 em, .module h2 em, .quiz h2 em { font-family: var(--serif); font-weight: 600; }
+    .intro-copy { padding-top: 8px; }
+    .intro-copy p { color: var(--muted); max-width: 390px; font-size: 16px; line-height: 1.65; margin: 0 0 24px; }
+    .progress { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: clamp(58px, 9vw, 130px); gap: 6px; }
+    .progress span { border-top: 1px solid var(--ink); padding-top: 10px; font: 10px var(--mono); color: var(--muted); }
+    .progress span:first-child { color: var(--ink); border-color: var(--orange); }
+
+    /* Modules */
+    .module { padding: clamp(70px, 10vw, 150px) var(--gutter); border-bottom: 1px solid var(--line); position: relative; }
+    .module-header { display: flex; gap: 20px; justify-content: space-between; margin-bottom: clamp(45px, 7vw, 95px); }
+    .chapter { min-width: 74px; font: 500 12px/1 var(--mono); color: var(--muted); }
+    .chapter span { display: block; color: var(--ink); font-size: 28px; letter-spacing: -.08em; margin-top: 6px; }
+    .module-title { flex: 1; }
+    .module-sub { max-width: 450px; color: var(--muted); font-size: 15px; line-height: 1.6; margin: 21px 0 0; }
+
+    /* Scene selector */
+    .scene-grid { border-top: 1px solid var(--ink); }
+    .scene-option { width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line); padding: 20px 0; cursor: pointer; display: grid; grid-template-columns: minmax(118px, .52fr) 1fr auto; text-align: left; align-items: center; gap: 18px; color: var(--ink); }
+    .scene-option .scene-name { font-size: clamp(22px, 2.7vw, 38px); letter-spacing: -.06em; font-weight: 700; }
+    .scene-option .scene-use { color: var(--muted); font-size: 14px; }
+    .scene-option .scene-arrow { width: 35px; height: 35px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; transition: .2s ease; }
+    .scene-option:hover .scene-arrow, .scene-option:focus-visible .scene-arrow, .scene-option.active .scene-arrow { background: var(--ink); color: var(--acid); border-color: var(--ink); transform: rotate(-45deg); }
+    .scene-option.active { color: var(--orange); }
+    .setting-readout { margin-top: 25px; padding: clamp(22px, 3vw, 36px); background: var(--ink); color: var(--paper); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .setting-readout div { border-left: 1px solid rgba(240,238,231,.2); padding-left: 15px; }
+    .setting-readout div:first-child { border: 0; padding-left: 0; }
+    .setting-readout small { display: block; color: rgba(240,238,231,.48); font: 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+    .setting-readout strong { display: block; margin-top: 8px; color: var(--acid); font-size: clamp(17px, 2.1vw, 27px); letter-spacing: -.06em; }
+    .mini-note { margin: 16px 0 0; font: 11px/1.5 var(--mono); color: var(--muted); }
+
+    /* Exposure structure */
+    .exposure-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr); gap: clamp(25px, 7vw, 110px); align-items: stretch; }
+    .exposure-wheel { background: #cad3bf; min-height: 455px; position: relative; overflow: hidden; display: grid; place-items: center; }
+    .exposure-wheel::before, .exposure-wheel::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(16,17,15,.25); }
+    .exposure-wheel::before { width: 76%; aspect-ratio: 1; }
+    .exposure-wheel::after { width: 43%; aspect-ratio: 1; background: var(--acid); }
+    .wheel-label { z-index: 1; text-align: center; font: 500 11px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+    .wheel-label strong { display: block; font: 800 clamp(31px, 4.2vw, 57px)/.86 var(--sans); letter-spacing: -.09em; text-transform: none; margin: 7px 0; }
+    .wheel-tag { position: absolute; font: 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .tag-one { top: 11%; left: 8%; } .tag-two { top: 24%; right: 8%; } .tag-three { bottom: 13%; left: 10%; }
+    .exposure-text { display: grid; align-content: space-between; padding: 8px 0; }
+    .facts { border-top: 1px solid var(--ink); }
+    .fact { padding: 17px 0 18px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 94px 1fr; gap: 15px; }
+    .fact dt { font: 10px var(--mono); color: var(--muted); text-transform: uppercase; }
+    .fact dd { margin: 0; font-size: 15px; line-height: 1.45; }
+    .exposure-text .hint { color: var(--muted); max-width: 380px; font-size: 14px; line-height: 1.55; }
+
+    /* Color scanner */
+    .color-stage { --grade: 50%; min-height: 500px; position: relative; overflow: hidden; background: #7d847c; }
+    .color-log, .color-graded { position: absolute; inset: 0; display: grid; align-items: end; padding: clamp(24px, 4vw, 48px); }
+    .color-log { background: linear-gradient(128deg, #b0b3a5 0%, #60685e 46%, #d3cfba 100%); color: #171916; }
+    .color-graded { clip-path: inset(0 0 0 var(--grade)); background: linear-gradient(128deg, #d2d97b 0%, #263327 43%, #d57531 100%); color: #fffbe6; }
+    .color-graded::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 70% 28%, rgba(255,196,75,.67), transparent 16%), linear-gradient(115deg, transparent 40%, rgba(20,10,0,.38)); mix-blend-mode: screen; }
+    .grade-copy { position: relative; z-index: 1; }
+    .grade-copy small { display: block; margin-bottom: 8px; font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .grade-copy strong { font-size: clamp(29px, 4vw, 58px); letter-spacing: -.075em; }
+    .split-handle { position: absolute; top: 0; bottom: 0; left: var(--grade); width: 1px; z-index: 3; background: var(--paper); }
+    .split-handle::before { content: "↔"; position: absolute; top: calc(50% - 19px); left: -19px; background: var(--paper); color: var(--ink); border-radius: 50%; display: grid; place-items: center; width: 38px; height: 38px; font: 17px var(--mono); }
+    .grade-range { position: absolute; inset: 0; opacity: 0; z-index: 5; cursor: ew-resize; width: 100%; height: 100%; }
+    .color-note { display: flex; gap: 15px; align-items: baseline; margin-top: 18px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .color-note b { color: var(--orange); font: 500 10px var(--mono); letter-spacing: .08em; }
+
+    /* Gear matrix */
+    .gear-table { border-top: 1px solid var(--ink); }
+    .gear-row { display: grid; grid-template-columns: 10% 23% minmax(0,1fr) 20%; gap: 15px; align-items: baseline; padding: 25px 0; border-bottom: 1px solid var(--line); }
+    .gear-no { font: 11px var(--mono); color: var(--muted); }
+    .gear-row h3 { font-size: clamp(18px, 2.2vw, 29px); letter-spacing: -.06em; margin: 0; }
+    .gear-row p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .gear-tag { justify-self: end; background: #dad6ca; border-radius: 30px; padding: 8px 10px; font: 10px var(--mono); white-space: nowrap; }
+
+    /* Workflow */
+    .workflow { background: var(--orange); color: var(--ink); }
+    .workflow .module-sub { color: rgba(16,17,15,.7); }
+    .workflow-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+    .workflow-step { min-height: 280px; padding: 25px; border-right: 1px solid var(--ink); position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+    .workflow-step:last-child { border-right: 0; }
+    .workflow-step b { font: 500 11px var(--mono); }
+    .workflow-step h3 { margin: 20px 0 0; font-size: clamp(27px, 3.5vw, 48px); line-height: .94; letter-spacing: -.07em; }
+    .workflow-step p { margin: 0; max-width: 250px; font-size: 14px; line-height: 1.5; }
+    .workflow-footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; font: 11px var(--mono); }
+
+    /* Quiz */
+    .quiz { padding: clamp(72px, 11vw, 155px) var(--gutter); background: var(--ink); color: var(--paper); }
+    .quiz .eyebrow { color: var(--acid); }
+    .quiz-intro { max-width: 460px; margin-top: 21px; color: rgba(240,238,231,.62); line-height: 1.6; font-size: 15px; }
+    .question { max-width: 760px; margin: clamp(50px, 7vw, 90px) 0 0 auto; border-top: 1px solid rgba(240,238,231,.36); padding-top: 22px; }
+    .question-number { color: var(--acid); font: 11px var(--mono); }
+    .question h3 { font-size: clamp(24px, 3.2vw, 42px); line-height: 1.05; letter-spacing: -.06em; max-width: 680px; margin: 13px 0 25px; }
+    .answers { display: grid; gap: 8px; }
+    .answer { background: transparent; min-height: 52px; border: 1px solid rgba(240,238,231,.26); color: var(--paper); display: flex; align-items: center; gap: 16px; padding: 11px 15px; cursor: pointer; text-align: left; transition: .15s ease; }
+    .answer:hover, .answer:focus-visible { border-color: var(--acid); color: var(--acid); }
+    .answer-key { width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; flex: 0 0 auto; font: 10px var(--mono); }
+    .answer.correct { background: var(--acid); color: var(--ink); border-color: var(--acid); }
+    .answer.wrong { border-color: var(--orange); color: var(--orange); }
+    .quiz-result { max-width: 760px; margin: 28px 0 0 auto; min-height: 26px; color: var(--acid); font: 12px/1.55 var(--mono); }
+    .quiz-result strong { color: var(--paper); }
+    .restart { border: 1px solid rgba(240,238,231,.35); background: transparent; color: var(--paper); padding: 11px 15px; font: 11px var(--mono); cursor: pointer; margin-top: 20px; }
+    .restart:hover, .restart:focus-visible { background: var(--paper); color: var(--ink); }
+
+    /* Footer */
+    footer { padding: 22px var(--gutter); display: flex; justify-content: space-between; gap: 20px; background: var(--paper); font: 10px var(--mono); color: var(--muted); }
+    footer b { color: var(--ink); font-weight: 500; }
+    :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    @media (max-width: 700px) {
+      .site-header { height: 62px; } .nav a:not(.nav-quiz) { display: none; } .nav .nav-quiz { min-height: 44px; display: inline-flex; align-items: center; padding: 9px 11px; }
+      .hero { min-height: 690px; } .hero::after { width: 54%; bottom: 22%; } .hero-top .eyebrow:last-child { display: none; } .hero-bottom { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; gap: 34px; } .intro-copy { padding-left: 0; }
+      .progress { grid-template-columns: repeat(4, 1fr); row-gap: 22px; }
+      .module-header { flex-direction: column; margin-bottom: 45px; } .chapter { display: flex; gap: 10px; align-items: baseline; } .chapter span { margin: 0; }
+      .scene-option { grid-template-columns: 1fr auto; padding: 19px 0; } .scene-option .scene-use { grid-column: 1 / 2; grid-row: 2; padding-top: 7px; }
+      .scene-option .scene-arrow { grid-column: 2; grid-row: 1 / span 2; } .setting-readout { grid-template-columns: 1fr; gap: 17px; } .setting-readout div { border-left: 0; border-top: 1px solid rgba(240,238,231,.2); padding: 15px 0 0; } .setting-readout div:first-child { border: 0; padding: 0; }
+      .exposure-layout { grid-template-columns: 1fr; } .exposure-wheel { min-height: 360px; }
+      .gear-row { grid-template-columns: 30px minmax(0,1fr); gap: 8px 14px; } .gear-row p { grid-column: 2; } .gear-tag { grid-column: 2; grid-row: 1; justify-self: end; align-self: center; }
+      .workflow-grid { grid-template-columns: 1fr; } .workflow-step { min-height: 215px; border-right: 0; border-bottom: 1px solid var(--ink); } .workflow-step:last-child { border-bottom: 0; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Frame Field Guide – zum Anfang"><span class="brand-mark">FF</span>FRAME / FIELD GUIDE</a>
+    <nav class="nav" aria-label="Kapitel">
+      <a href="#record">Record</a><a href="#color">Color</a><a href="#gear">Gear</a><a class="nav-quiz" href="#quiz">Wissenscheck ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-top"><span class="eyebrow">Videografie / Grundlagen</span><span class="eyebrow">Edition 01 — 2026</span></div>
+      <div class="hero-main">
+        <h1 id="page-title">Ein Bild.<br>Ein <em>Gefühl.</em><br>Ein System.</h1>
+        <p class="hero-description">Keine zufälligen Einstellungen mehr: ein klarer Einstieg in Framerate, Log, Ton, Objektive und einen sicheren Workflow nach dem Dreh.</p>
+      </div>
+      <div class="hero-bottom"><div class="hero-index"><strong>01—07</strong><span>Grundlagen, die du am Set wirklich brauchst.</span></div><a class="scroll-cue" href="#intro">Starten <span>↓</span></a></div>
+    </section>
+
+    <section class="intro" id="intro" aria-labelledby="intro-heading">
+      <div class="split">
+        <h2 id="intro-heading">Gute Bilder entstehen nicht nur durch Technik. Aber <em>ohne</em> Technik wird es schwierig.</h2>
+        <div class="intro-copy"><p>Die Kamera trifft keine kreativen Entscheidungen für dich. Sie reagiert nur auf das, was du ihr vorgibst. Dieses Field Guide übersetzt die wichtigsten Begriffe in Entscheidungen, die du beim Drehen treffen kannst.</p><p>Arbeite dich Kapitel für Kapitel durch und teste dich am Schluss selbst.</p></div>
+      </div>
+      <div class="progress" aria-label="Kapitelübersicht"><span>01 / Frame</span><span>02 / Exposure</span><span>03 / Color</span><span>04 / Sensor</span><span>05 / Lens</span><span>06 / Sound</span><span>07 / Backup</span></div>
+    </section>
+
+    <section class="module" id="record" aria-labelledby="record-heading">
+      <div class="module-header"><div class="chapter">Kapitel<span>01</span></div><div class="module-title"><div class="eyebrow">Frame rate</div><h2 id="record-heading">Zeit formt, wie Bewegung <em>fühlt.</em></h2><p class="module-sub">Die Framerate legt fest, aus wie vielen einzelnen Bildern eine Sekunde besteht. Wähle sie nicht zufällig – sie bestimmt deinen Look und deinen Spielraum im Schnitt.</p></div></div>
+      <div class="scene-grid" aria-label="Framerate nach Situation auswählen">
+        <button class="scene-option active" data-scene="cinema" type="button"><span class="scene-name">Cinematic</span><span class="scene-use">Interviews, Storys, ruhige Bewegung</span><span class="scene-arrow">↗</span></button>
+        <button class="scene-option" data-scene="social" type="button"><span class="scene-name">Standard</span><span class="scene-use">Web, Corporate, TV im europäischen Raum</span><span class="scene-arrow">↗</span></button>
+        <button class="scene-option" data-scene="slow" type="button"><span class="scene-name">Slow motion</span><span class="scene-use">Dynamik verlangsamen, Details sichtbar machen</span><span class="scene-arrow">↗</span></button>
+      </div>
+      <div class="setting-readout" aria-live="polite"><div><small>Framerate</small><strong id="fps-value">24 fps</strong></div><div><small>Startwert Shutter</small><strong id="shutter-value">1/50 s</strong></div><div><small>Wofür</small><strong id="use-value">Film-Look</strong></div></div>
+      <p class="mini-note">Faustregel: Bei natürlicher Bewegungsunschärfe liegt die Verschlusszeit ungefähr beim Doppelten der Framerate. Bei 25 fps also etwa 1/50 s.</p>
+    </section>
+
+    <section class="module" aria-labelledby="exposure-heading">
+      <div class="module-header"><div class="chapter">Kapitel<span>02</span></div><div class="module-title"><div class="eyebrow">Exposure</div><h2 id="exposure-heading">Belichtung ist ein <em>Gleichgewicht.</em></h2><p class="module-sub">Blende, Verschlusszeit und ISO arbeiten zusammen. Ändert sich eine Einstellung, verändert sich nicht nur die Helligkeit, sondern oft auch der Look deines Bildes.</p></div></div>
+      <div class="exposure-layout">
+        <div class="exposure-wheel" aria-label="Das Belichtungsdreieck"><span class="wheel-tag tag-one">Blende<br>Schärfentiefe</span><span class="wheel-tag tag-two">Shutter<br>Bewegung</span><span class="wheel-tag tag-three">ISO<br>Rauschen</span><div class="wheel-label">Das Dreieck<strong>Exposure</strong>Helligkeit + Bildwirkung</div></div>
+        <div class="exposure-text"><dl class="facts"><div class="fact"><dt>Blende</dt><dd>Eine kleine f-Zahl wie <b>f/1.8</b> lässt viel Licht hinein und kann den Hintergrund unscharf machen.</dd></div><div class="fact"><dt>Shutter</dt><dd>Eine kurze Zeit friert Bewegung ein. Für Video soll sie meist zur gewählten Framerate passen.</dd></div><div class="fact"><dt>ISO</dt><dd>Hellt elektronisch auf, kann aber Bildrauschen verstärken. Erst Licht, dann Blende und Shutter – ISO zuletzt.</dd></div></dl><p class="hint">Tipp: Stell zuerst die Framerate und die passende Verschlusszeit ein. Dann entscheidest du über Bildtiefe mit der Blende. ISO bleibt dein Feinregler.</p></div>
+      </div>
+    </section>
+
+    <section class="module" id="color" aria-labelledby="color-heading">
+      <div class="module-header"><div class="chapter">Kapitel<span>03</span></div><div class="module-title"><div class="eyebrow">Log / color</div><h2 id="color-heading">Log ist kein Look. Es ist <em>Spielraum.</em></h2><p class="module-sub">Ein Log-Profil bewahrt mehr Informationen in hellen und dunklen Bildbereichen. Deshalb sieht es direkt aus der Kamera flach aus – erst im Color Grading erhält es Kontrast und Stimmung.</p></div></div>
+      <div class="color-stage" id="color-stage" aria-label="Vergleich zwischen Log-Material und einer Farbkorrektur. Ziehe über das Bild."><div class="color-log"><div class="grade-copy"><small>Vor dem Grading</small><strong>LOG</strong></div></div><div class="color-graded"><div class="grade-copy"><small>Nach Correction + Grading</small><strong>GRADE</strong></div></div><div class="split-handle" aria-hidden="true"></div><input class="grade-range" type="range" min="0" max="100" value="50" aria-label="Vergleich Log und Grading verschieben" /></div>
+      <p class="color-note"><b>MERKE</b><span><strong>Color Correction</strong> korrigiert Belichtung und Weissabgleich. <strong>Color Grading</strong> gestaltet danach bewusst die Stimmung und Farbwelt.</span></p>
+    </section>
+
+    <section class="module" id="gear" aria-labelledby="gear-heading">
+      <div class="module-header"><div class="chapter">Kapitel<span>04—06</span></div><div class="module-title"><div class="eyebrow">Sensor / lens / sound</div><h2 id="gear-heading">Das Equipment ist nur so gut wie dein <em>Verständnis.</em></h2><p class="module-sub">Nicht jede Kamera braucht Vollformat. Nicht jede Szene braucht eine offene Blende. Entscheidend ist, die Wirkung deiner Werkzeuge zu kennen.</p></div></div>
+      <div class="gear-table">
+        <article class="gear-row"><span class="gear-no">04</span><h3>Vollformat</h3><p>Ein grösserer Sensor liefert bei gleichem Bildausschnitt oft weniger Tiefenschärfe und kann bei wenig Licht Vorteile bieten. APS-C und Micro Four Thirds sind trotzdem starke, kompaktere Systeme.</p><span class="gear-tag">Sensor</span></article>
+        <article class="gear-row"><span class="gear-no">05</span><h3>Festbrennweite</h3><p>Hat keinen Zoom, ist dafür oft lichtstark, klein und optisch sehr klar. Sie zwingt dich, mit dem Körper einen besseren Bildausschnitt zu suchen.</p><span class="gear-tag">Objektiv</span></article>
+        <article class="gear-row"><span class="gear-no">05</span><h3>IBIS</h3><p>In-Body Image Stabilization stabilisiert den Sensor im Gehäuse. Gut für ruhige Handheld-Shots – aber kein Ersatz für bewusste Kamerabewegung oder ein Stativ.</p><span class="gear-tag">Stabilisierung</span></article>
+        <article class="gear-row"><span class="gear-no">06</span><h3>WAV statt Hoffnung</h3><p>WAV ist ein unkomprimiertes, hochwertiges Audioformat. Kontrolliere am Set trotzdem immer den Pegel mit Kopfhörern: Übersteuerte Aufnahmen lassen sich kaum retten.</p><span class="gear-tag">Audio</span></article>
+      </div>
+    </section>
+
+    <section class="module workflow" aria-labelledby="workflow-heading">
+      <div class="module-header"><div class="chapter">Kapitel<span>07</span></div><div class="module-title"><div class="eyebrow">Data workflow</div><h2 id="workflow-heading">Dein Dreh endet nicht beim <em>letzten Take.</em></h2><p class="module-sub">Ein sauberer Workflow schützt deine Aufnahmen und erspart dir später Chaos im Schnitt. Sichere immer bevor du formatierst.</p></div></div>
+      <div class="workflow-grid"><article class="workflow-step"><b>01 / INGEST</b><h3>Karte kopieren.</h3><p>Übertrage den gesamten Karteninhalt in einen klar benannten Projektordner – nicht nur einzelne Clips.</p></article><article class="workflow-step"><b>02 / VERIFY</b><h3>Dateien prüfen.</h3><p>Öffne Stichproben und vergleiche die Anzahl bzw. Grösse der Dateien, bevor die Karte wieder eingesetzt wird.</p></article><article class="workflow-step"><b>03 / BACK UP</b><h3>3—2—1.</h3><p>Drei Kopien. Zwei verschiedene Speichermedien. Eine Kopie an einem anderen Ort oder in der Cloud.</p></article></div>
+      <div class="workflow-footer"><span>Gute Namen schlagen Chaos: <b>Projekt_YYYY-MM-DD_Kamera_Karte</b></span><span>Nie formatieren, bevor mindestens zwei Kopien geprüft sind.</span></div>
+    </section>
+
+    <section class="quiz" id="quiz" aria-labelledby="quiz-heading">
+      <div class="eyebrow">Wissenscheck</div><h2 id="quiz-heading">Bereit für den <em>nächsten Dreh?</em></h2><p class="quiz-intro">Drei kurze Fragen. Wähle eine Antwort – du bekommst direkt Feedback.</p>
+      <div id="questions"></div><p id="quiz-result" class="quiz-result" aria-live="polite"></p><button class="restart" id="restart" type="button" hidden>Nochmal starten ↻</button>
+    </section>
+  </main>
+
+  <footer><span><b>FRAME / FIELD GUIDE</b> — Videografie Grundlagen</span><span>Erstellt als Lernwebsite · 1 Datei · HTML / CSS / JavaScript</span></footer>
+
+  <script>
+    const scenes = { cinema: { fps: '24 fps', shutter: '1/50 s', use: 'Film-Look' }, social: { fps: '25 fps', shutter: '1/50 s', use: 'Europa-Standard' }, slow: { fps: '50 / 60 fps', shutter: '1/100 / 1/125 s', use: 'Zeitlupe' } };
+    document.querySelectorAll('.scene-option').forEach(button => button.addEventListener('click', () => { const data = scenes[button.dataset.scene]; document.querySelectorAll('.scene-option').forEach(item => item.classList.toggle('active', item === button)); document.getElementById('fps-value').textContent = data.fps; document.getElementById('shutter-value').textContent = data.shutter; document.getElementById('use-value').textContent = data.use; }));
+
+    const range = document.querySelector('.grade-range'); const stage = document.getElementById('color-stage');
+    range.addEventListener('input', () => stage.style.setProperty('--grade', range.value + '%'));
+
+    const quiz = [
+      { question: 'Du filmst mit 25 fps. Welche Verschlusszeit ist ein sinnvoller Startpunkt für natürliche Bewegungsunschärfe?', answers: ['1/25 s', '1/50 s', '1/200 s'], correct: 1, feedback: 'Richtig. Die doppelte Framerate ist eine gute Faustregel: 25 fps → etwa 1/50 s.' },
+      { question: 'Wozu wird ein Log-Profil hauptsächlich verwendet?', answers: ['Damit das Bild direkt besonders kontrastreich aussieht', 'Damit mehr Spielraum für die Farbkorrektur erhalten bleibt', 'Damit die Datei kleiner wird'], correct: 1, feedback: 'Genau. Log speichert ein flaches Bild, damit in Highlights und Schatten mehr Reserven bleiben.' },
+      { question: 'Was bedeutet die 3—2—1-Backup-Regel?', answers: ['Drei Minuten sichern, zwei Karten formatieren, eine Festplatte kaufen', 'Drei Kopien auf zwei Medientypen, eine davon ausserhalb', 'Drei Dateien pro Clip und eine in der Kamera lassen'], correct: 1, feedback: 'Richtig. Das schützt Material auch bei Defekt, Verlust oder Diebstahl.' }
+    ];
+    const questionsEl = document.getElementById('questions'); const resultEl = document.getElementById('quiz-result'); const restart = document.getElementById('restart'); let score = 0; let answered = 0;
+    function renderQuiz() { score = 0; answered = 0; resultEl.innerHTML = ''; restart.hidden = true; questionsEl.innerHTML = quiz.map((item, index) => `<section class="question" data-question="${index}"><div class="question-number">0${index + 1} / 03</div><h3>${item.question}</h3><div class="answers">${item.answers.map((answer, answerIndex) => `<button class="answer" type="button" data-answer="${answerIndex}"><span class="answer-key">${String.fromCharCode(65 + answerIndex)}</span><span>${answer}</span></button>`).join('')}</div></section>`).join('');
+      document.querySelectorAll('.question').forEach(section => section.querySelectorAll('.answer').forEach(button => button.addEventListener('click', () => answerQuestion(section, button)))); }
+    function answerQuestion(section, button) { if (section.dataset.done) return; section.dataset.done = 'true'; const item = quiz[Number(section.dataset.question)]; const selected = Number(button.dataset.answer); const buttons = section.querySelectorAll('.answer'); buttons.forEach((option, index) => { option.disabled = true; if (index === item.correct) option.classList.add('correct'); }); if (selected === item.correct) score++; else button.classList.add('wrong'); answered++; if (answered === quiz.length) { resultEl.innerHTML = `<strong>${score} von ${quiz.length} richtig.</strong> ${score === quiz.length ? 'Du bist bereit für den nächsten Dreh.' : 'Schau dir die Kapitel nochmals an – besonders Framerate, Log und Backup.'}`; restart.hidden = false; } }
+    restart.addEventListener('click', renderQuiz); renderQuiz();
+  </script>
+</body>
+</html>
